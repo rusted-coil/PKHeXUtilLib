@@ -2,6 +2,6 @@
 {
     public static class FilePath
     {
-        public static string NameParserDataPath => "";
+        public static string NameParserDataPath => "Data/NameParser.json";
     }
 }

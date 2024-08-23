@@ -1,13 +1,14 @@
 ﻿using System.Text.Json;
 
-namespace PKHeXUtilLib.Infrastructure.Internal
+namespace PKHeXUtilLib.Infrastructure
 {
-    internal sealed class Serializer
+    public static class Serializer
     {
-        /*
-        // ファイル読み込み
-        public static T Deserialize<T>(string filePath)
-            where T : new()
+        /// <summary>
+        /// 指定したパスからファイルを読み込み、T型のデータを返します。
+        /// <para> * 読み込みに失敗した場合は単にnewしたものを返します。</para>
+        /// </summary>
+        public static T Deserialize<T>(string filePath) where T : new()
         {
             string content;
             try
@@ -27,8 +28,11 @@ namespace PKHeXUtilLib.Infrastructure.Internal
             return new T();
         }
 
-        // ファイル保存
-        public static bool Serialize<T>(string filePath, T data)
+        /// <summary>
+        /// 指定したパスにデータを保存します。
+        /// <para> * 保存に成功した場合はtrueを返し、失敗した場合はfalseを返してerrorMessageにエラーメッセージを格納します。</para>
+        /// </summary>
+        public static bool Serialize<T>(string filePath, T data, out string errorMessage)
         {
             string content = JsonSerializer.Serialize(data);
 
@@ -43,12 +47,12 @@ namespace PKHeXUtilLib.Infrastructure.Internal
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                errorMessage = e.Message;
                 return false;
             }
 
+            errorMessage = string.Empty;
             return true;
         }
-        */
     }
 }
